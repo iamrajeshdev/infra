@@ -3,6 +3,6 @@ variable "environment" {
 }
 
 variable "product" {
-  type = "string"
+  type = string
   description = "set the product name for the ec2 module"
 }

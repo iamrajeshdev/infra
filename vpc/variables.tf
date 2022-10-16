@@ -3,7 +3,7 @@ variable "environment" {
 }
 
 variable "product" {
-  type = "string"
+  type = string
   description = "set the product name for the ec2 module"
 }
 
@@ -13,6 +13,6 @@ variable "vpc_index" {
 }
 
 variable "primary_cidr_block" {
-  type = "string"
+  type = string
   description = "set the base cidr block for the vpc"
 }
