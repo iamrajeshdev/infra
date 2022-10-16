@@ -1,4 +1,51 @@
 
+resource "aws_key_pair" "key_pair" {
+
+  # Name of the Key
+  key_name   = "my_key_${var.keyname}_${var.environment}"
+  # Adding the SSH authorized key !
+  public_key = file("~/.ssh/authorized_keys")
+  
+ }
+
+
+ resource "aws_subnet" "subnet_us_east_1" {  
+  # VPC in which subnet has to be created!
+  vpc_id = var.vpc_id
+  
+  # IP Range of this subnet
+  cidr_block = "10.10.0.0/26"
+  
+  # Data Center of this subnet.
+  availability_zone = "us-east-1"
+  
+  # Enabling automatic public IP assignment on instance launch!
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "Public Subnet"
+  }
+}
+
+ resource "aws_subnet" "subnet_us_east_2" {
+  
+  # VPC in which subnet has to be created!
+  vpc_id = var.vpc_id
+  
+  # IP Range of this subnet
+  cidr_block = "10.11.0.0/26"
+  
+  # Data Center of this subnet.
+  availability_zone = "us-east-2"
+  
+  # Enabling automatic public IP assignment on instance launch!
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "Public Subnet"
+  }
+}
+
 resource "aws_security_group" "hk_sec_group" {
   name = "${var.vpc_name}_sec_group_0"
   description = "security group for ${var.vpc_name} in ${var.environment} environment"
@@ -36,7 +83,7 @@ resource "aws_security_group" "hk_sec_group" {
 resource "aws_instance" "hk_ec2_instance" {
   ami = var.ami
   instance_type = var.itype
-  subnet_id = var.subnet_id
+  subnet_id = aws_subnet.subnet_us_east_1.id
   key_name = "my_key_${var.keyname}_${var.environment}"
 
   vpc_security_group_ids = [
@@ -51,7 +98,7 @@ resource "aws_instance" "hk_ec2_instance" {
   tags = {
     Name ="server_${var.vpc_name}_${var.environment}"
     Environment = "${var.environment}"
-    OS = "UBUNTU"
+    OS = "Amazon Linux"
     Managed = "IAC"
   }
 

@@ -27,13 +27,3 @@ variable "itype" {
  type = "string"
  description = "set the environment for ec2 module" 
 }
-
-variable "subnet_id" {
-  type = "string"
-  description = "set the environment for ec2 module" 
-}
-
-variable "keyname" {
-  type = "string"
-  description = "set the environment for ec2 module" 
-}
