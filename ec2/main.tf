@@ -14,7 +14,7 @@
   vpc_id = var.vpc_id
   
   # IP Range of this subnet
-  cidr_block = "10.0.0.0/25"
+  cidr_block = var.subnet_cidr_range
   
   # Data Center of this subnet.
   availability_zone = "us-east-1a"

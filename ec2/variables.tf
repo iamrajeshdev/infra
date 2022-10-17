@@ -27,3 +27,8 @@ variable "itype" {
  type = string
  description = "set the environment for ec2 module" 
 }
+
+variable "subnet_cidr_range" {
+  type = string
+  description = "set the cidr for the subnet"
+}
