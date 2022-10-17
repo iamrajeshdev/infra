@@ -25,26 +25,7 @@
   tags = {
     Name = "Public Subnet"
   }
-}
-
- resource "aws_subnet" "subnet_us_east_1b" {
-  
-  # VPC in which subnet has to be created!
-  vpc_id = var.vpc_id
-  
-  # IP Range of this subnet
-  cidr_block = "10.0.0.0/26"
-  
-  # Data Center of this subnet.
-  availability_zone = "us-east-1b"
-  
-  # Enabling automatic public IP assignment on instance launch!
-  map_public_ip_on_launch = true
-
-  tags = {
-    Name = "Public Subnet"
-  }
-}
+ }
 
 resource "aws_security_group" "hk_sec_group" {
   name = "${var.vpc_name}_sec_group_0"
