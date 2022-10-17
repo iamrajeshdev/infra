@@ -14,7 +14,7 @@
   vpc_id = var.vpc_id
   
   # IP Range of this subnet
-  cidr_block = "10.10.0.0/26"
+  cidr_block = "10.0.0.0/25"
   
   # Data Center of this subnet.
   availability_zone = "us-east-1a"
@@ -33,7 +33,7 @@
   vpc_id = var.vpc_id
   
   # IP Range of this subnet
-  cidr_block = "10.11.0.0/26"
+  cidr_block = "10.0.0.0/26"
   
   # Data Center of this subnet.
   availability_zone = "us-east-1b"
@@ -62,7 +62,7 @@ resource "aws_security_group" "hk_sec_group" {
   // To Allow Port 80 Transport
   ingress {
     from_port = 80
-    protocol = "http"
+    protocol = "tcp"
     to_port = 80
     cidr_blocks = ["0.0.0.0/0"]
   }
