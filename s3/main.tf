@@ -3,8 +3,6 @@ locals {
     "Hackathon:environment" = var.environment
     "Hackathon:product" = var.product
   }
-
-  vpc_name = "${var.environment}-vpc-${var.vpc_index}"
 }
 
 
