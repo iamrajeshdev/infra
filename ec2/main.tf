@@ -70,12 +70,6 @@ resource "aws_instance" "hk_ec2_instance" {
   vpc_security_group_ids = [
     aws_security_group.hk_sec_group.id
   ]
-  root_block_device {
-    delete_on_termination = true
-    iops = 150
-    volume_size = 50
-    volume_type = "gp2"
-  }
   tags = {
     Name ="server_${var.vpc_name}_${var.environment}"
     Environment = "${var.environment}"
