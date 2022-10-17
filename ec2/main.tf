@@ -9,7 +9,7 @@
 #  }
 
 
- resource "aws_subnet" "subnet_us_east_1" {  
+ resource "aws_subnet" "subnet_us_east_1a" {  
   # VPC in which subnet has to be created!
   vpc_id = var.vpc_id
   
@@ -17,7 +17,7 @@
   cidr_block = "10.10.0.0/26"
   
   # Data Center of this subnet.
-  availability_zone = "us-east-1"
+  availability_zone = "us-east-1a"
   
   # Enabling automatic public IP assignment on instance launch!
   map_public_ip_on_launch = true
@@ -27,7 +27,7 @@
   }
 }
 
- resource "aws_subnet" "subnet_us_east_2" {
+ resource "aws_subnet" "subnet_us_east_1b" {
   
   # VPC in which subnet has to be created!
   vpc_id = var.vpc_id
@@ -36,7 +36,7 @@
   cidr_block = "10.11.0.0/26"
   
   # Data Center of this subnet.
-  availability_zone = "us-east-2"
+  availability_zone = "us-east-1b"
   
   # Enabling automatic public IP assignment on instance launch!
   map_public_ip_on_launch = true
@@ -83,7 +83,7 @@ resource "aws_security_group" "hk_sec_group" {
 resource "aws_instance" "hk_ec2_instance" {
   ami = var.ami
   instance_type = var.itype
-  subnet_id = aws_subnet.subnet_us_east_1.id
+  subnet_id = aws_subnet.subnet_us_east_1a.id
   # key_name = "my_key_${var.environment}"
 
   vpc_security_group_ids = [
