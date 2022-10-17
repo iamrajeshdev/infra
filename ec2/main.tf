@@ -2,7 +2,7 @@
 resource "aws_key_pair" "key_pair" {
 
   # Name of the Key
-  key_name   = "my_key_${var.keyname}_${var.environment}"
+  key_name   = "my_key_${var.environment}"
   # Adding the SSH authorized key !
   public_key = file("~/.ssh/authorized_keys")
   
@@ -84,7 +84,7 @@ resource "aws_instance" "hk_ec2_instance" {
   ami = var.ami
   instance_type = var.itype
   subnet_id = aws_subnet.subnet_us_east_1.id
-  key_name = "my_key_${var.keyname}_${var.environment}"
+  key_name = "my_key_${var.environment}"
 
   vpc_security_group_ids = [
     aws_security_group.hk_sec_group.id
