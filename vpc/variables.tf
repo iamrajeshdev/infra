@@ -16,3 +16,14 @@ variable "primary_cidr_block" {
   type = string
   description = "set the base cidr block for the vpc"
 }
+
+variable "account_sso_roles" {
+  type = map(object({
+    role_description = string
+    role_grants = list(string)
+    role_tags = map(list(object))
+  }))
+  description = "test objects"
+  default = {}
+}
+
