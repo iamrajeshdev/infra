@@ -21,7 +21,10 @@ variable "account_sso_roles" {
   type = map(object({
     role_description = string
     role_grants = list(string)
-    role_tags = map(list(object))
+    role_tags = map(list(object({
+      key = string
+      value = string
+    })))
   }))
   description = "test objects"
   default = {}
